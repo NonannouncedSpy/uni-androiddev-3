@@ -35,6 +35,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/lario"
         android:elevation="-1dp"
+        android:clickable="true"
+        android:onClick="superstar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
