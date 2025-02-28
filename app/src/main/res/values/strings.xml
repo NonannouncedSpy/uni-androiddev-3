@@ -4,5 +4,11 @@
     <string name="main_title1">LARIOWARE 3 ™</string>
     <string name="main_title2">Mass Lario</string>
     <string name="main_button">Commence</string>
+    <!-- Strings for SecondActivity -->
+    <string name="second_welcome">Welcome. Introduce yourself.</string>
+    <string name="second_hint">Who are you?</string>
+    <string name="second_superstar">Be a superstar</string>
+    <string name="second_money">Make a lotta money</string>
+    <string name="second_kar">Drive a fancy car</string>
 
 </resources>
