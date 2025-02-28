@@ -35,8 +35,17 @@ public class SecondActivity extends AppCompatActivity {
             }
 
             // after input is finished - show buttons if there is any text, otherwise hide
+            // also sus out anybody who thinks they can be Lario.
             @Override
             public void afterTextChanged(Editable s) {
+                if (s.toString().equalsIgnoreCase("lario")) {
+                    findViewById(R.id.second_text_imposter).setVisibility(View.VISIBLE);
+                    return;
+                }
+                else {
+                    findViewById(R.id.second_text_imposter).setVisibility(View.GONE);
+                }
+
                 if (s.toString().isEmpty()) {
                     starButton.setVisibility(View.GONE);
                     cashButton.setVisibility(View.GONE);
