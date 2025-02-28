@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Larioware 3: Mass Lario</string>
+    <!-- Strings for MainActivity -->
+    <string name="main_title1">LARIOWARE 3 ™</string>
+    <string name="main_title2">Mass Lario</string>
+    <string name="main_button">Свершить</string>
+    <!-- Strings for SecondActivity -->
+    <string name="second_welcome">Добро пожаловать. Представьтесь.</string>
+    <string name="second_hint">Кто Вы?</string>
+    <string name="second_superstar">Быть суперзвездой</string>
+    <string name="second_money">Делать много деньгов</string>
+    <string name="second_kar">Водить стильную машину</string>
+    <string name="second_BAD">ВЫДАЧА СЕБЯ ЗА ДРУГИХ НЕ БУДЕТ ТЕРПЕТЬСЯ</string>
+    <string name="second_score_star">Статус звезды: выпущено %1$d хитов</string>
+    <string name="second_score_cash">Lario Coins: %1$d</string>
+    <string name="second_score_car">Стильная машина: %1$s</string>
+
+</resources>
