@@ -14,11 +14,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     // super secret toast that you get by clicking on Lario image
+    // its also randomized from 3 quotes :)
     public void superstar(View v) {
-        Toast.makeText(this, R.string.main_superstar, Toast.LENGTH_SHORT).show();
+        String[] quotes = {"Luisiario", "Everybody wanna be a superstar",
+                "Make a lotta money drive a fancy car"};
+        Random rand = new Random();
+
+        Toast.makeText(this, quotes[rand.nextInt(quotes.length)] , Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -29,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
         // animating Lario
         // first: create the animation with specific attributes
         RotateAnimation rotateAnim = new RotateAnimation(
-                0f, 360f,
-                0f, 0f);
+                0f, -360f,
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f);
         // and have it interpolated
         rotateAnim.setInterpolator(new LinearInterpolator());
         // and have it go forever
