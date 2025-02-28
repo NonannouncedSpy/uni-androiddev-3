@@ -9,6 +9,7 @@
     android:background="@drawable/stylish_button">
 
     <TextView
+        android:id="@+id/main_text_title1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_title1"
@@ -20,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/main_text_title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_title2"
@@ -31,11 +33,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/main_img_lario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/lario"
         android:elevation="-1dp"
         android:clickable="true"
+        android:focusable="true"
         android:onClick="superstar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.widget.Button
+        android:id="@+id/main_button_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/stylish_button"
