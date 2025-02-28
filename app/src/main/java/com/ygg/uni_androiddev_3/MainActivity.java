@@ -1,9 +1,11 @@
 package com.ygg.uni_androiddev_3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,12 +25,19 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, quotes[rand.nextInt(quotes.length)] , Toast.LENGTH_SHORT).show();
     }
 
+    private void begin() {
+        Intent secondIntent = new Intent(getApplicationContext(), SecondActivity.class);
+
+        startActivity(secondIntent);
+        finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // animating Lario
+        /* animating Lario */
         // first: create the animation with specific attributes
         RotateAnimation rotateAnim = new RotateAnimation(
                 0f, -360f,
@@ -44,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
         // assign the animation to our image
         final ImageView larioView = findViewById(R.id.main_img_lario);
         larioView.setAnimation(rotateAnim);
+
+        /* button to switch to second activity */
+        final Button beginButton = findViewById(R.id.main_button_start);
+
+        beginButton.setOnClickListener(v -> begin());
     }
 
 }

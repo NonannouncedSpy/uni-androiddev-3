@@ -3,6 +3,7 @@
     <style name="Base.Theme.Uniandroiddev3" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Colors -->
         <item name="android:textColor">@color/green</item>
+        <item name="android:editTextColor">@color/green</item>
         <item name="android:background">@color/dark_green</item>
         <item name="android:textColorHint">@color/pale_green</item>
         <!-- Font stuff -->

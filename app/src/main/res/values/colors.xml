@@ -6,4 +6,6 @@
     <color name="green">#00AA00</color>
     <color name="dark_green">#001A00</color>
     <color name="pale_green">#4A624A</color>
+
+    <color name="red">#AA0000</color>
 </resources>
