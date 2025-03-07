@@ -1,5 +1,6 @@
 package com.ygg.uni_androiddev_3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -34,6 +39,57 @@ public class SecondActivity extends AppCompatActivity {
         for (View v : views) {
             v.setVisibility(visibility);
         }
+    }
+
+    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult res) {
+                    // lol we are DEFINITELY SURE we WILL get an extra ;)
+                    switch (res.getResultCode()) {
+                        case 1: // star activity
+                        {
+                            larioPublishes = (ArrayList<String>) res.getData().getExtras().get("publishes");
+                            break;
+                        }
+                        case 2: // coin activity
+                        {
+                            larioCoins = res.getData().getIntExtra("coins", 0);
+                            break;
+                        }
+                        case 3: // car activity
+                        {
+                            larioCar = res.getData().getStringExtra("car");
+                            break;
+                        }
+                    }
+                }
+            }
+    );
+
+    private void switchToHits() {
+        Intent hitIntent = new Intent(getApplicationContext(), SuperstarActivity.class);
+
+        hitIntent.putExtra("publishes", larioPublishes);
+
+        activityResultLauncher.launch(hitIntent);
+    }
+
+    private void switchToCash() {
+        Intent cashIntent = new Intent(getApplicationContext(), SuperstarActivity.class);
+
+        cashIntent.putExtra("coins", larioCoins);
+
+        activityResultLauncher.launch(cashIntent);
+    }
+
+    private void switchToCar() {
+        Intent carIntent = new Intent(getApplicationContext(), SuperstarActivity.class);
+
+        carIntent.putExtra("car", larioCar);
+
+        activityResultLauncher.launch(carIntent);
     }
 
     @Override
