@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,16 +53,19 @@ public class SecondActivity extends AppCompatActivity {
                         case 1: // star activity
                         {
                             larioPublishes = (ArrayList<String>) res.getData().getExtras().get("publishes");
+                            Log.w("LARIO3", "got publishes");
                             break;
                         }
                         case 2: // coin activity
                         {
                             larioCoins = res.getData().getIntExtra("coins", 0);
+                            Log.w("LARIO3", "got coins: " + larioCoins.toString());
                             break;
                         }
                         case 3: // car activity
                         {
                             larioCar = res.getData().getStringExtra("car");
+                            Log.w("LARIO3", "got car: " + larioCar);
                             break;
                         }
                     }
