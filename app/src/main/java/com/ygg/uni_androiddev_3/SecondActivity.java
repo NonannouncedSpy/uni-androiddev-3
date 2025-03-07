@@ -43,6 +43,8 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
+    // special guy to launch other activities for a result
+    // not too well-versed with the exact inner workings, so just take that it works :)
     private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -59,7 +61,7 @@ public class SecondActivity extends AppCompatActivity {
                         case 2: // coin activity
                         {
                             larioCoins = res.getData().getIntExtra("coins", 0);
-                            Log.w("LARIO3", "got coins: " + larioCoins.toString());
+                            Log.w("LARIO3", "got coins: " + larioCoins);
                             break;
                         }
                         case 3: // car activity
@@ -128,44 +130,34 @@ public class SecondActivity extends AppCompatActivity {
         // do some funny stuff based on text editing field
         whofield.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            // if input is empty - hide everything
-            // if not - show everything
-            // and possibly catch impersonators
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            
             @Override
             public void afterTextChanged(Editable s) {
                 resetScores();
+                View[] viewsWeToggle = {starButton, cashButton, carButton, scoreStar, scoreCash, scoreCar};
 
+                // possibly catch impersonators and yell at them
                 if (s.toString().equalsIgnoreCase("lario")) {
                     findViewById(R.id.second_text_imposter).setVisibility(View.VISIBLE);
-                    changeViewsVisibility(new View[] {starButton, cashButton, carButton,
-                                    scoreStar, scoreCash, scoreCar},
-                            View.GONE);
+                    changeViewsVisibility(viewsWeToggle, View.GONE);
                     return;
                 }
                 else {
                     findViewById(R.id.second_text_imposter).setVisibility(View.GONE);
                 }
 
+                // if input is empty - hide everything
                 if (s.toString().isEmpty()) {
-                    changeViewsVisibility(new View[] {starButton, cashButton, carButton,
-                            scoreStar, scoreCash, scoreCar},
-                            View.GONE);
+                    changeViewsVisibility(viewsWeToggle, View.GONE);
                     return;
                 }
 
-
-                changeViewsVisibility(new View[] {starButton, cashButton, carButton,
-                                scoreStar, scoreCash, scoreCar},
-                        View.VISIBLE);
+                // if not - show everything, and record the name
+                changeViewsVisibility(viewsWeToggle, View.VISIBLE);
                 username = s.toString();
             }
         });

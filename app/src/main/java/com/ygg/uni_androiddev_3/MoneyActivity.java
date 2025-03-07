@@ -28,7 +28,7 @@ public class MoneyActivity extends AppCompatActivity {
                     public void handleOnBackPressed() {
                         Intent returnIntent = new Intent(getApplicationContext(), SecondActivity.class);
 
-                        returnIntent.putExtra("coins", larioCoins);
+                        returnIntent.putExtra("coins", larioCoins.intValue());
 
                         setResult(2, returnIntent);
                         finish();
