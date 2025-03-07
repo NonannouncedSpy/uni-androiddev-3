@@ -16,10 +16,12 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     // super secret toast that you get by clicking on Lario image
-    // its also randomized from 3 quotes :)
     public void superstar(View v) {
-        String[] quotes = {"Luisiario", "Everybody wanna be a superstar",
-                "Make a lotta money drive a fancy car"};
+        // poor imitation of "weights"; normal quotes with w of 3, a rare one with w of 1
+        String[] quotes = {"Luisiario", "Luisiario", "Luisiario",
+                "Everybody wanna be a superstar", "Everybody wanna be a superstar", "Everybody wanna be a superstar",
+                "Make a lotta money drive a fancy car", "Make a lotta money drive a fancy car", "Make a lotta money drive a fancy car",
+                "eye"};
         Random rand = new Random();
 
         Toast.makeText(this, quotes[rand.nextInt(quotes.length)] , Toast.LENGTH_SHORT).show();
