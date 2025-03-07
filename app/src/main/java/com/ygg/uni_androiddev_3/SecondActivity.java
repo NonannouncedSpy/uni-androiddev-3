@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class SecondActivity extends AppCompatActivity {
 
+    private String username;
     // 3 dummy scores; why 3? Because ! :)
     private Integer larioCoins;
     private String larioCar;
@@ -68,25 +69,28 @@ public class SecondActivity extends AppCompatActivity {
             }
     );
 
-    private void switchToHits() {
+    private void switchToHits(View v) {
         Intent hitIntent = new Intent(getApplicationContext(), SuperstarActivity.class);
 
+        hitIntent.putExtra("username", username);
         hitIntent.putExtra("publishes", larioPublishes);
 
         activityResultLauncher.launch(hitIntent);
     }
 
-    private void switchToCash() {
-        Intent cashIntent = new Intent(getApplicationContext(), SuperstarActivity.class);
+    private void switchToCash(View v) {
+        Intent cashIntent = new Intent(getApplicationContext(), MoneyActivity.class);
 
+        cashIntent.putExtra("username", username);
         cashIntent.putExtra("coins", larioCoins);
 
         activityResultLauncher.launch(cashIntent);
     }
 
-    private void switchToCar() {
-        Intent carIntent = new Intent(getApplicationContext(), SuperstarActivity.class);
+    private void switchToCar(View v) {
+        Intent carIntent = new Intent(getApplicationContext(), CarActivity.class);
 
+        carIntent.putExtra("username", username);
         carIntent.putExtra("car", larioCar);
 
         activityResultLauncher.launch(carIntent);
@@ -111,6 +115,11 @@ public class SecondActivity extends AppCompatActivity {
         final Button starButton = findViewById(R.id.second_button_superstar);
         final Button cashButton = findViewById(R.id.second_button_money);
         final Button carButton = findViewById(R.id.second_button_car);
+
+        // button click listeners
+        starButton.setOnClickListener(v -> switchToHits(v));
+        cashButton.setOnClickListener(v -> switchToCash(v));
+        carButton.setOnClickListener(v -> switchToCar(v));
 
         // do some funny stuff based on text editing field
         whofield.addTextChangedListener(new TextWatcher() {
@@ -153,6 +162,7 @@ public class SecondActivity extends AppCompatActivity {
                 changeViewsVisibility(new View[] {starButton, cashButton, carButton,
                                 scoreStar, scoreCash, scoreCar},
                         View.VISIBLE);
+                username = s.toString();
             }
         });
     }
