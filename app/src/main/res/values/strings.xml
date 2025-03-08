@@ -30,5 +30,8 @@
     <string name="cash_toast">Made %1$d money</string>
 
     <!-- Strings for CarActivity -->
+    <string name="car_text_title">Driving fancy car</string>
+    <string name="car_hint">Your car</string>
+    <string name="car_button">Drive</string>
 
 </resources>
