@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Larioware 3: Mass Lario</string>
+
     <!-- Strings for MainActivity -->
     <string name="main_title1">LARIOWARE 3 ™</string>
     <string name="main_title2">Mass Lario</string>
     <string name="main_button">Commence</string>
+
     <!-- Strings for SecondActivity -->
     <string name="second_welcome">Welcome. Introduce yourself.</string>
     <string name="second_hint">Who are you?</string>
@@ -14,10 +16,19 @@
     <string name="second_score_star">Superstar status: %1$d released hits</string>
     <string name="second_score_cash">Lario Coins: %1$d</string>
     <string name="second_score_car">Fancy car: %1$s</string>
+
     <!-- Strings for SuperstarActivity -->
     <string name="star_title">Everybody be a Superstar</string>
     <string name="star_title2"><u>Your hits:</u></string>
     <string name="star_hint">Write a new hit...</string>
     <string name="star_button">Publish</string>
+
+    <!-- Strings for MoneyActivity -->
+    <string name="cash_text_title">Making lotta money</string>
+    <string name="cash_text_cash">Current money:\n%1$d</string>
+    <string name="cash_button">Make lotta money</string>
+    <string name="cash_toast">Made %1$d money</string>
+
+    <!-- Strings for CarActivity -->
 
 </resources>

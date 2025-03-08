@@ -27,14 +27,11 @@ public class SecondActivity extends AppCompatActivity {
     private String larioCar;
     private ArrayList<String> larioPublishes = new ArrayList<>();
 
-    public SecondActivity() {
-        resetScores();
-    }
-
     private void resetScores() {
         larioCoins = 0;
         larioCar = "None";
         larioPublishes.clear();
+        refreshScores();
     }
 
     // a little helper to make my goddamn towers less of a tower
@@ -55,6 +52,7 @@ public class SecondActivity extends AppCompatActivity {
                     larioPublishes = data.getStringArrayList("publishes");
                     Log.w("LARIO3", "got publishes");
 
+                    refreshScores();
                     }
                 }
     );
@@ -70,6 +68,7 @@ public class SecondActivity extends AppCompatActivity {
                     larioCoins = data.getInt("coins", 0);
                     Log.w("LARIO3", "got coins: " + larioCoins);
 
+                    refreshScores();
                     }
                 }
     );
@@ -85,6 +84,7 @@ public class SecondActivity extends AppCompatActivity {
                     larioCar = data.getString("car");
                     Log.w("LARIO3", "got car: " + larioCar);
 
+                    refreshScores();
                     }
                 }
     );
@@ -116,10 +116,21 @@ public class SecondActivity extends AppCompatActivity {
         carCallback.launch(carIntent);
     }
 
+    private void refreshScores() {
+        final TextView scoreStar = findViewById(R.id.second_score_star);
+        final TextView scoreCash = findViewById(R.id.second_score_cash);
+        final TextView scoreCar = findViewById(R.id.second_score_car);
+
+        scoreStar.setText(getString(R.string.second_score_star, larioPublishes.size()));
+        scoreCash.setText(getString(R.string.second_score_cash, larioCoins));
+        scoreCar.setText(getString(R.string.second_score_car, larioCar));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        resetScores();
 
         final TextView scoreStar = findViewById(R.id.second_score_star);
         final TextView scoreCash = findViewById(R.id.second_score_cash);
@@ -170,19 +181,5 @@ public class SecondActivity extends AppCompatActivity {
                 username = s.toString();
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        // update scores
-        final TextView scoreStar = findViewById(R.id.second_score_star);
-        final TextView scoreCash = findViewById(R.id.second_score_cash);
-        final TextView scoreCar = findViewById(R.id.second_score_car);
-
-        scoreStar.setText(getString(R.string.second_score_star, larioPublishes.size()));
-        scoreCash.setText(getString(R.string.second_score_cash, larioCoins));
-        scoreCar.setText(getString(R.string.second_score_car, larioCar));
     }
 }

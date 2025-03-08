@@ -8,4 +8,44 @@
     android:orientation="vertical"
     tools:context=".MoneyActivity">
 
+    <TextView
+        android:id="@+id/cash_text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cash_text_title"
+        android:textSize="26sp"
+        android:textAlignment="center"
+        />
+
+    <LinearLayout
+        android:id="@+id/cash_2"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/cash_2_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lario"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/cash_2_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/cash_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/stylish_button"
+        android:text="@string/cash_button"/>
+
 </LinearLayout>
