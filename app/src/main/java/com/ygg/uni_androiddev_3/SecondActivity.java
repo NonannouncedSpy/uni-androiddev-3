@@ -1,5 +1,6 @@
 package com.ygg.uni_androiddev_3;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -43,45 +44,58 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
-    // special guy to launch other activities for a result
-    // not too well-versed with the exact inner workings, so just take that it works :)
-    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+    private ActivityResultLauncher<Intent> superstarCallback = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult res) {
-                    // lol we are DEFINITELY SURE we WILL get an extra ;)
-                    switch (res.getResultCode()) {
-                        case 1: // star activity
-                        {
-                            larioPublishes = (ArrayList<String>) res.getData().getExtras().get("publishes");
-                            Log.w("LARIO3", "got publishes");
-                            break;
-                        }
-                        case 2: // coin activity
-                        {
-                            larioCoins = res.getData().getIntExtra("coins", 0);
-                            Log.w("LARIO3", "got coins: " + larioCoins);
-                            break;
-                        }
-                        case 3: // car activity
-                        {
-                            larioCar = res.getData().getStringExtra("car");
-                            Log.w("LARIO3", "got car: " + larioCar);
-                            break;
-                        }
+                    if (res.getResultCode() != Activity.RESULT_OK) { return; }
+
+                    Bundle data = res.getData().getExtras();
+                    larioPublishes = data.getStringArrayList("publishes");
+                    Log.w("LARIO3", "got publishes");
+
                     }
                 }
-            }
+    );
+
+    private ActivityResultLauncher<Intent> moneyCallback = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult res) {
+                    if (res.getResultCode() != Activity.RESULT_OK) { return; }
+
+                    Bundle data = res.getData().getExtras();
+                    larioCoins = data.getInt("coins", 0);
+                    Log.w("LARIO3", "got coins: " + larioCoins);
+
+                    }
+                }
+    );
+
+    private ActivityResultLauncher<Intent> carCallback = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult res) {
+                    if (res.getResultCode() != Activity.RESULT_OK) { return; }
+
+                    Bundle data = res.getData().getExtras();
+                    larioCar = data.getString("car");
+                    Log.w("LARIO3", "got car: " + larioCar);
+
+                    }
+                }
     );
 
     private void switchToHits(View v) {
         Intent hitIntent = new Intent(getApplicationContext(), SuperstarActivity.class);
 
         hitIntent.putExtra("username", username);
-        hitIntent.putExtra("publishes", larioPublishes);
+        hitIntent.putStringArrayListExtra("publishes", larioPublishes);
 
-        activityResultLauncher.launch(hitIntent);
+        superstarCallback.launch(hitIntent);
     }
 
     private void switchToCash(View v) {
@@ -90,7 +104,7 @@ public class SecondActivity extends AppCompatActivity {
         cashIntent.putExtra("username", username);
         cashIntent.putExtra("coins", larioCoins);
 
-        activityResultLauncher.launch(cashIntent);
+        moneyCallback.launch(cashIntent);
     }
 
     private void switchToCar(View v) {
@@ -99,7 +113,7 @@ public class SecondActivity extends AppCompatActivity {
         carIntent.putExtra("username", username);
         carIntent.putExtra("car", larioCar);
 
-        activityResultLauncher.launch(carIntent);
+        carCallback.launch(carIntent);
     }
 
     @Override
@@ -107,14 +121,9 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        /* keep scores updated */
         final TextView scoreStar = findViewById(R.id.second_score_star);
         final TextView scoreCash = findViewById(R.id.second_score_cash);
         final TextView scoreCar = findViewById(R.id.second_score_car);
-
-        scoreStar.setText(getString(R.string.second_score_star, larioPublishes.size()));
-        scoreCash.setText(getString(R.string.second_score_cash, larioCoins));
-        scoreCar.setText(getString(R.string.second_score_car, larioCar));
 
         final EditText whofield = findViewById(R.id.second_edit_who);
 
@@ -134,7 +143,7 @@ public class SecondActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
-            
+
             @Override
             public void afterTextChanged(Editable s) {
                 resetScores();
@@ -161,5 +170,19 @@ public class SecondActivity extends AppCompatActivity {
                 username = s.toString();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // update scores
+        final TextView scoreStar = findViewById(R.id.second_score_star);
+        final TextView scoreCash = findViewById(R.id.second_score_cash);
+        final TextView scoreCar = findViewById(R.id.second_score_car);
+
+        scoreStar.setText(getString(R.string.second_score_star, larioPublishes.size()));
+        scoreCash.setText(getString(R.string.second_score_cash, larioCoins));
+        scoreCar.setText(getString(R.string.second_score_car, larioCar));
     }
 }

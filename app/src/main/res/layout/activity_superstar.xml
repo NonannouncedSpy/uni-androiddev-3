@@ -7,4 +7,51 @@
     android:layout_height="match_parent"
     tools:context=".SuperstarActivity">
 
+    <TextView
+        android:id="@+id/star_text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/star_title"
+        android:textSize="26sp"/>
+
+    <TextView
+        android:id="@+id/star_text_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/star_text_title"
+        android:layout_marginTop="50dp"
+        android:text="@string/star_title2"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/star_text_hitlist"
+        android:layout_width="wrap_content"
+        android:layout_height="100sp"
+        android:text=""
+        android:textSize="20sp"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:layout_below="@id/star_text_title2"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/star_edittext"
+        android:layout_width="240sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/star_text_hitlist"
+        android:layout_marginTop="200sp"
+        android:hint="@string/star_hint"
+        android:textSize="20sp"/>
+
+    <android.widget.Button
+        android:id="@+id/star_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/star_edittext"
+        android:layout_alignTop="@id/star_edittext"
+        android:text="@string/star_button"
+        android:textSize="24sp"
+        android:background="@drawable/stylish_button"/>
+
 </RelativeLayout>

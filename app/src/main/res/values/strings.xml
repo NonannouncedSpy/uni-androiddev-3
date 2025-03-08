@@ -14,5 +14,10 @@
     <string name="second_score_star">Superstar status: %1$d released hits</string>
     <string name="second_score_cash">Lario Coins: %1$d</string>
     <string name="second_score_car">Fancy car: %1$s</string>
+    <!-- Strings for SuperstarActivity -->
+    <string name="star_title">Everybody be a Superstar</string>
+    <string name="star_title2"><u>Your hits:</u></string>
+    <string name="star_hint">Write a new hit...</string>
+    <string name="star_button">Publish</string>
 
 </resources>

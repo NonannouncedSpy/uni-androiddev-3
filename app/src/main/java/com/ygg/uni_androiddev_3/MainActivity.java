@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         String[] quotes = {"Luisiario", "Luisiario", "Luisiario",
                 "Everybody wanna be a superstar", "Everybody wanna be a superstar", "Everybody wanna be a superstar",
                 "Make a lotta money drive a fancy car", "Make a lotta money drive a fancy car", "Make a lotta money drive a fancy car",
-                "eye"};
+                "\uD83D\uDC41"};
         Random rand = new Random();
 
         Toast.makeText(this, quotes[rand.nextInt(quotes.length)] , Toast.LENGTH_SHORT).show();
