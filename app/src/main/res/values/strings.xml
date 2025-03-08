@@ -27,7 +27,6 @@
     <string name="cash_text_title">Making lotta money</string>
     <string name="cash_text_cash">Current money:\n%1$d</string>
     <string name="cash_button">Make lotta money</string>
-    <string name="cash_toast">Made %1$d money</string>
 
     <!-- Strings for CarActivity -->
     <string name="car_text_title">Driving fancy car</string>
